@@ -5,6 +5,7 @@ public class Comandos {
 	
 	private Cadastro_Local local = new Cadastro_Local();
 	private Cadastro_Categoria categoria = new Cadastro_Categoria();
+	private Cadastro_Bem bem = new Cadastro_Bem();
 	private String comandos = "/cadastrar_localizacao\n/cadastrar_categ\n/cadastrar_bem \n/listar_localizacao \n/listar_categorias\n/listar_bens_de_uma_localizacao\n"
 			+ "/buscar_bem_por_codigo\n/buscar_bem_por_nome\n/buscar_bem_por_descricao\n/movimentar_bem\n/gerar_relatorio";
 	
@@ -86,13 +87,106 @@ public class Comandos {
 				enviar.montarMsg(captura_dmensagens.up(), "CATEGORIA CADASTRADA COM SUCESSO!");
 				
 				msgcaptura = "";
+				//cadastrar bem 
 			}else if(msgcaptura.equals("/cadastrar_bem")  ){
+				String localizacao_bem = "";
+				String categoria_bem =  "";
 				
+				
+						enviar.montarMsg(captura_dmensagens.up(), "digite o nome do Bem:");
+				
+				
+				do {
+					
+					bem.setNome(captura_dmensagens.recebido());
+					
+					}while(bem.getNome().equals(""));
+				
+				enviar.montarMsg(captura_dmensagens.up(), "digite a descrição do bem:");
+				
+				
+					do {
+					
+					bem.setDescricao(captura_dmensagens.recebido());
+					
+					}while(bem.getDescricao().equals(""));
+					
+					
+					enviar.montarMsg(captura_dmensagens.up(), "digite o codigo do bem:");
+						
+					do {
+						
+						bem.setCodigo(captura_dmensagens.recebido());
+						
+						}while(bem.getCodigo().equals(""));
+					
+					enviar.montarMsg(captura_dmensagens.up(), "informe a localização do bem:");
+					
+					do {
+						
+						localizacao_bem  = captura_dmensagens.recebido();
+						
+						}while(localizacao_bem.equals(""));
+					
+					
+						enviar.montarMsg(captura_dmensagens.up(), "informe a categoria do bem:");
+					
+					do {
+						
+						categoria_bem  = captura_dmensagens.recebido();
+						
+						}while(categoria_bem.equals(""));
+					
+					bem.criar(localizacao_bem , categoria_bem);
+					
+					/* while(bem.criar(localizacao_bem , categoria_bem) != 0 ) {
+					
+					if(bem.criar(localizacao_bem , categoria_bem) == 1 )  {
+						
+						
+						enviar.montarMsg(captura_dmensagens.up(), "localização nao encontrada digite uma das seguintes:");
+						local.listarloc();
+						
+						do {
+							
+							localizacao_bem  = captura_dmensagens.recebido();
+							
+							}while(localizacao_bem.equals(""));
+						
+						
+						
+						
+					}else{
+						
+						enviar.montarMsg(captura_dmensagens.up(), "informe a categoria do bem:");
+						categoria.listarcat();
+						
+						do {
+							
+							categoria_bem  = captura_dmensagens.recebido();
+							
+							}while(categoria_bem.equals(""));
+						
+					}//fim if
+				
+					*///fim while
+
+						enviar.montarMsg(captura_dmensagens.up(), "BEM CADASTRADO COM SUCESSO!!!");
+					
+					
+					
+					
+				
+					
+				
+				msgcaptura = "";
+				//listar localização
 			}else if(msgcaptura.equals("/listar_localizacao") ){
 				
 				local.listarloc();
 				msgcaptura = "";
 				
+				//listar categoria
 			}else if( msgcaptura.equals("/listar_categorias") ) {
 				categoria.listarcat();
 				msgcaptura = "";
