@@ -190,11 +190,81 @@ public class Comandos {
 			}else if( msgcaptura.equals("/listar_categorias") ) {
 				categoria.listarcat();
 				msgcaptura = "";
-			}
+				//listar bens de uma localização
+			}else if(msgcaptura.equals("/listar_bens_de_uma_localizacao")) {
+				String loc =  "";
+				enviar.montarMsg(captura_dmensagens.up(), "digite o nome da localização para ver os itens dela:");
+				
+				
+				do {
+					
+					 loc = captura_dmensagens.recebido();
+					
+					}while(loc.equals(""));
+				
+				bem.listarBensLoc(loc);
+				
+
+				
+				msgcaptura = "";
+				//lista bem por codigo
+			}else if(msgcaptura.equals("/buscar_bem_por_codigo")){
+				
+				String codigoo = "";
+				enviar.montarMsg(captura_dmensagens.up(), "digite o codigo do item:");
+				
+				do {
+					
+					 codigoo = captura_dmensagens.recebido();
+					
+					}while(codigoo.equals(""));
+				
+				bem.listarbemcodigo(codigoo);
+
+				msgcaptura = "";
+			/// buscar por nome 	
+			}else if(msgcaptura.equals("/buscar_bem_por_nome")) {
+				String N = "";
+				
+				
+				enviar.montarMsg(captura_dmensagens.up(), "digite o nome do item:");
+				
+				do {
+					
+					 N = captura_dmensagens.recebido();
+					
+					}while(N.equals(""));
+				
+				
+				
+				bem.buscarnome(N);
+				
+				msgcaptura = "";
+			//buscar por descricao
+	}else if(msgcaptura.equals("/buscar_bem_por_descricao")){
+		
+		String codigoo = "";
+		enviar.montarMsg(captura_dmensagens.up(), "digite a descrição do item:");
+		
+		do {
+			
+			 codigoo = captura_dmensagens.recebido();
+			
+			}while(codigoo.equals(""));
+		
+		bem.buscardescri(codigoo);
+
+		msgcaptura = "";
 			
 			
 		
-			
+	}else if(msgcaptura.equals("/movimentar_bem") ){
+		
+	}else if(msgcaptura.equals("/gerar_relatorio") ){
+		bem.listarB();
+		bem.listarC();
+		bem.listarI();
+	}	
 		
 }//fim metodo
 	

@@ -1,6 +1,7 @@
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.BufferedReader;
@@ -59,6 +60,7 @@ public class Cadastro_Local {
 			
 			File file = new File("locais"); // por o nome do diretorio ali
 			File afile[] = file.listFiles();
+			Arrays.sort(afile);
 			int i = 0;
 			
 			for (int j = afile.length; i < j; i++) {

@@ -1,6 +1,7 @@
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.io.File;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -62,6 +63,7 @@ public class Cadastro_Categoria{
 		
 		File file = new File("categorias"); // por o nome do diretorio ali
 		File afile[] = file.listFiles();
+		Arrays.sort(afile);
 		int i = 0;
 		
 		for (int j = afile.length; i < j; i++) {
